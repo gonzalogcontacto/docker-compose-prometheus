@@ -12,3 +12,10 @@ services:
       - "--web.console.templates=/usr/share/prometheus/consoles"
     ports:
       - 9090:9090
+
+  app:
+    build: .
+    ports:
+      - 8081:8081
+    depends_on:
+      - prometheus
