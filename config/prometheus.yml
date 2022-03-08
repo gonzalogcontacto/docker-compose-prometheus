@@ -1,8 +1,16 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: "gonzalo-app"
+
 scrape_configs:
   - job_name: "prometheus"
     scrape_interval: 5s
     static_configs:
       - targets: ["localhost:9090"]
-        labels:
-          env: local
-          region: us-east-1
+
+  - job_name: "gonzalo"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["app:8081"]
